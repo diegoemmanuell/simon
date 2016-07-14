@@ -1,1 +1,0 @@
-select t.id, t.nome, s.nome, from turma t, serie s where s.id = t.serie
