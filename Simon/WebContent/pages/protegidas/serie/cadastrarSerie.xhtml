@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:rich="http://richfaces.org/rich"
+	  xmlns:a4j="http://richfaces.org/a4j"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:t="http://myfaces.apache.org/tomahawk"
+	  template="/pages/template/template.xhtml">
+			<ui:define name="content">
+					<t:saveState id="serieST" value="#{serieController.serie}"/>
+					<h1 style="margin-left: 1cm;">Cadastrar Série</h1>
+					<hr />
+					<h:form id="formCadastrarSerie">
+					<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+						<p:growl id="growl" showDetail="true" sticky="true"></p:growl>
+						<p:panel id="panelCadastraSerie" header="Dados da Turma">
+							<p:outputLabel value="Campos sinalizados com "/><p:outputLabel value="*" style="font-weight: bold; color:red"/><p:outputLabel value=" são obrigatórios!"/>
+							<p:panelGrid columns="2"  styleClass="semBorda">
+								
+								<h:panelGroup>
+									<p:outputLabel value="*" style="font-weight: bold; color:red"/>
+									<p:outputLabel value="Nível: " style="font-weight: bold"></p:outputLabel>
+								</h:panelGroup>
+								<h:panelGroup>
+									<p:inputText id="nome" value="#{serieController.serie.nome}" required="true" requiredMessage="Campo 'Login' obrigatório!"/>
+									<p:message for="nome"/>
+								</h:panelGroup>
+							</p:panelGrid>
+								<p:ajaxStatus onstart="PF('status').show()" onsuccess="PF('status').hide()"/>
+								<p:dialog widgetVar="status" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+									<p:graphicImage name="/pages/template/imagens/carregando.gif"/>
+								</p:dialog>
+								<p:commandButton value="Cadastrar" id="btnCadastar" action="#{serieController.cadastrarSerie}" update="growl"></p:commandButton>
+								<p:commandButton value="Limpar"/>
+								<br />
+						</p:panel>	
+					</h:form>
+			</ui:define>
+			
+</ui:composition>
