@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+<body>
+	<ui:composition>
+		<div id="menu" >
+			<h:form id="formMenu">
+				<p:panelMenu>
+					<p:submenu label="Início">
+						<p:menuitem value="Página Inicial" url="/pages/protegidas/index2.xhtml"></p:menuitem>
+					</p:submenu>
+					<p:submenu label="Usuários">
+						<p:menuitem value="Adicionar" url="/pages/protegidas/usuario/cadastrarUsuario.xhtml"></p:menuitem>
+						<p:menuitem value="Buscar" url="/pages/protegidas/usuario/buscarUsuario.xhtml"></p:menuitem>
+					</p:submenu>
+					<p:submenu label="Disciplinas">
+						<p:menuitem value="Adicionar" url="/pages/protegidas/disciplina/cadastrarDisciplina.xhtml"/>
+						<p:menuitem value="Buscar" url="/pages/protegidas/disciplina/listarDisciplinas.xhtml"></p:menuitem>
+					</p:submenu>
+					<p:submenu label="Séries">
+						<p:menuitem value="Adicionar" url="/pages/protegidas/serie/cadastrarSerie.xhtml"></p:menuitem>
+						<p:menuitem value="Buscar" url="/pages/protegidas/serie/listarSeries.xhtml"></p:menuitem>
+					</p:submenu>
+					<p:submenu label="Turmas">
+						<p:menuitem value="Adicionar" url="/pages/protegidas/turma/cadastrarTurma.xhtml"/>
+						<p:menuitem value="Buscar" url="/pages/protegidas/turma/buscarTurma.xhtml"/>
+					</p:submenu>
+					<p:submenu label="Questões">
+						<p:menuitem value="Adicionar" url="/pages/protegidas/questao/cadastrarQuestao.xhtml"/>
+						<p:menuitem value="Buscar" url="/pages/protegidas/questao/listarQuestoes.xhtml"></p:menuitem>
+					</p:submenu>
+				</p:panelMenu>
+			</h:form>
+		</div>
+	</ui:composition>
+</body>
+</html>
