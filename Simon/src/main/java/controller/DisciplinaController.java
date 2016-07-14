@@ -10,10 +10,8 @@ import lombok.Getter;
 import lombok.Setter;
 import model.Disciplina;
 import model.Serie;
-import model.Turma;
 import util.jsf.FacesUtil;
 import dao.DisciplinaDao;
-import dao.TurmaDao;
 
 @ManagedBean
 public class DisciplinaController {
