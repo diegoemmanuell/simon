@@ -4,18 +4,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import javax.crypto.NoSuchPaddingException;
 import javax.faces.bean.ManagedBean;
 
-import com.mysql.jdbc.Util;
-import com.sun.jmx.snmp.Timestamp;
-
+import model.Usuario;
 import util.Constantes;
 import util.Criptografia;
 import util.jsf.FacesUtil;
-import model.Usuario;
 import dao.UsuarioDao;
-import dao.UtilDao;
 
 @ManagedBean
 public class UsuarioController {

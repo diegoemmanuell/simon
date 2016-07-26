@@ -3,14 +3,11 @@ package dao;
 import java.util.List;
 
 import model.Serie;
-import model.Usuario;
 
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.criterion.Restrictions;
 
 public class SerieDao{
 	Configuration config = new Configuration();

@@ -8,8 +8,6 @@ import javax.faces.model.SelectItem;
 
 import model.Disciplina;
 import model.Serie;
-import model.Turma;
-import model.Usuario;
 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;

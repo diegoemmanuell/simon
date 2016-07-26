@@ -1,6 +1,5 @@
 package dao;
 
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -20,7 +19,6 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import util.ConsultaGenerica;
-import util.PathConsultasEnum;
 
 
 public class TurmaDao{

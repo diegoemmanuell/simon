@@ -2,14 +2,14 @@ package dao;
 
 import java.util.List;
 
+import model.Usuario;
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.*;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
-
-import model.Usuario;
 
 public class UsuarioDao{
 	Configuration config = new Configuration();
