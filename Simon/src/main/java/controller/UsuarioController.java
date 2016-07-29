@@ -5,7 +5,11 @@ import java.util.Date;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
+import lombok.Getter;
+import lombok.Setter;
 import model.Usuario;
 import util.Constantes;
 import util.Criptografia;
@@ -15,50 +19,25 @@ import dao.UsuarioDao;
 @ManagedBean
 public class UsuarioController {
 	SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-	private UsuarioDao dao;
-	private Usuario usuario;
-	private String perfil;
-	private List<Usuario> usuarios;
-	private boolean exibeMensagem;
-	private boolean exibeDataTable = false; 
+	private @Getter @Setter UsuarioDao dao;
+	private @Getter @Setter Usuario usuario;
+	private @Getter @Setter String perfil;
+	private @Getter @Setter List<Usuario> usuarios;
+	private @Getter @Setter boolean exibeMensagem;
+	private @Getter @Setter boolean exibeDataTable = false;
+	private @Getter @Setter String usuarioInvalido;
 	
-	
-	
-	public boolean isExibeDataTable() {
-		return exibeDataTable;
-	}
-	public void setExibeDataTable(boolean exibeDataTable) {
-		this.exibeDataTable = exibeDataTable;
-	}
-	public boolean isExibeMensagem() {
-		return exibeMensagem;
-	}
-	public void setExibeMensagem(boolean exibeMensagem) {
-		this.exibeMensagem = exibeMensagem;
-	}
-	public List<Usuario> getUsuarios() {
-		return usuarios;
-	}
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
-	}
-	public String getPerfil() {
-		return perfil;
-	}
-	public void setPerfil(String perfil) {
-		this.perfil = perfil;
-	}
-	
-	public Usuario getUsuario() {
-		return usuario;
-	}
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
 	public UsuarioController() {
 		dao = new UsuarioDao();
 		usuario = new Usuario();
 		exibeMensagem = false;
+		
+		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+		
+		this.setUsuarioInvalido(request.getParameter("usuarioInvalido"));
+		if(usuarioInvalido != null && !usuarioInvalido.equals("") && usuarioInvalido.equals("true")){
+			FacesUtil.setMessageError("ERRO", "Login ou senha inválidos!");
+		}
 	}
 	public String teste(){
 		return "logar";

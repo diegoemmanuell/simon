@@ -12,17 +12,16 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
-  <security:http auto-config='true'>
-    <security:intercept-url pattern="/**" access="ROLE_USER" />
+  <security:http>
+    <security:intercept-url pattern="/pages/protegidas/**" access="ROLE_USER" />
+    <security:form-login login-page="/pages/login.xhtml" default-target-url="/pages/protegidas/index2.xhtml" authentication-failure-url="/pages/login.xhtml?usuarioInvalido=true"/>
+    <security:logout logout-success-url="/pages/login.xhtml" invalidate-session="true"/>
  </security:http>
  
+ <bean class="controller.UserDetailsServiceImpl" id="userDetailsService">
+ </bean>
+ 
  <security:authentication-manager>
-         <security:authentication-provider>
-             <security:user-service>
-                <security:user name="user1@example.com"
-                        password="user1"
-                        authorities="ROLE_USER"/>
-            </security:user-service>
-        </security:authentication-provider>
-    </security:authentication-manager>
+		<security:authentication-provider user-service-ref="userDetailsService"></security:authentication-provider>
+</security:authentication-manager>
 </beans>
