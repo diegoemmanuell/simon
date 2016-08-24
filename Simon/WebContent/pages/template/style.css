@@ -1,3 +1,10 @@
+#content{
+	
+}
+.formLogin{
+	margin-left: 20%;
+}
+
 .semBorda tr, .semBorda td{
 	border: white; !important;
 }

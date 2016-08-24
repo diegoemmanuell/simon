@@ -13,7 +13,7 @@
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
   <security:http>
-    <security:intercept-url pattern="/pages/protegidas/**" access="ROLE_USER" />
+    <security:intercept-url pattern="/pages/protegidas/**" access="ROLE_ADMIN, ROLE_PROFESSOR" />
     <security:form-login login-page="/pages/login.xhtml" default-target-url="/pages/protegidas/index2.xhtml" authentication-failure-url="/pages/login.xhtml?usuarioInvalido=true"/>
     <security:logout logout-success-url="/pages/login.xhtml" invalidate-session="true"/>
  </security:http>

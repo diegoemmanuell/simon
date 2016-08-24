@@ -1,8 +1,10 @@
 package dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import model.Usuario;
+import model.UsuarioSeguranca;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -35,6 +37,33 @@ public class UsuarioDao{
 		SessionFactory factory = config.buildSessionFactory();
 		Session session = factory.openSession();
 		return session.createCriteria(Usuario.class).add(Restrictions.eq("login", usuario.getLogin())).list();
+		
+		
+		
+	}
+	
+	public List<UsuarioSeguranca> listarUsuarioPorLogin(UsuarioSeguranca usuario) {
+		config.configure();
+		SessionFactory factory = config.buildSessionFactory();
+		Session session = factory.openSession();
+		List<Usuario> lista = session.createCriteria(Usuario.class).add(Restrictions.eq("login", usuario.getLogin())).list();
+		List<UsuarioSeguranca> usuarios = new ArrayList<>();
+		for(int i = 0; i < lista.size(); i++){
+			UsuarioSeguranca u = new UsuarioSeguranca();
+			u.setCpf(lista.get(i).getCpf());
+			u.setDtInclusao(lista.get(i).getDtInclusao());
+			u.setEmail(lista.get(i).getEmail());
+			u.setId(lista.get(i).getId());
+			u.setLogin(lista.get(i).getLogin());
+			u.setMatricula(lista.get(i).getMatricula());
+			u.setNome(lista.get(i).getNome());
+			u.setPerfil(lista.get(i).getPerfil());
+			u.setSenha(lista.get(i).getSenha());
+			u.setStatusMatricula(lista.get(i).isStatusMatricula());
+			u.setTurma(lista.get(i).getTurma());
+			usuarios.add(u);
+		}
+		return usuarios;
 		
 		
 		

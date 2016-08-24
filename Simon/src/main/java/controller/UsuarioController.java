@@ -27,6 +27,7 @@ public class UsuarioController {
 	private @Getter @Setter boolean exibeDataTable = false;
 	private @Getter @Setter String usuarioInvalido;
 	
+	
 	public UsuarioController() {
 		dao = new UsuarioDao();
 		usuario = new Usuario();
@@ -42,6 +43,9 @@ public class UsuarioController {
 	public String teste(){
 		return "logar";
 	}
+	public void setUsuario(){
+		usuario = (Usuario) FacesUtil.getObjectSession("login");
+	}
 	public void cadastrarUsuario(){
 		try{
 			usuario.setPerfil(Integer.parseInt(perfil));
@@ -51,25 +55,26 @@ public class UsuarioController {
 			setExibeMensagem(true);
 			FacesUtil.setMessageSucesso("Sucesso", "Usuário Cadastrado!");
 		}catch(Exception e){
-			FacesUtil.setMessageSucesso("ERRO", e.getMessage());
+			FacesUtil.setMessageError("ERRO", e.getMessage());
 		}
 	}
 	
 	public void buscarUsuarios(){
+		usuario = new Usuario();
 		usuario.setPerfil(Integer.parseInt(perfil));
-		if(usuario.getPerfil() == Integer.parseInt(Constantes.PERFIL_TODOS) && usuario.getLogin().equals("")){
+		if(usuario.getPerfil() == Constantes.PERFIL_TODOS && usuario.getLogin().equals("")){
 			usuarios = dao.listarTodosUsuarios(usuario);
-		}else if(!usuario.getLogin().equals("") && usuario.getPerfil() == Integer.parseInt(Constantes.PERFIL_TODOS)){
+		}else if(!usuario.getLogin().equals("") && usuario.getPerfil() == Constantes.PERFIL_TODOS){
 			usuarios = dao.listarUsuarioPorLogin(usuario);
-		}else if(usuario.getPerfil() != Integer.parseInt(Constantes.PERFIL_TODOS) && usuario.getLogin().equals("")){
+		}else if(usuario.getPerfil() != Constantes.PERFIL_TODOS && usuario.getLogin().equals("")){
 			usuarios = dao.listarUsuariosPorPerfil(usuario);
-		}else if(usuario.getPerfil() != Integer.parseInt(Constantes.PERFIL_TODOS) && !usuario.getLogin().equals("")){
+		}else if(usuario.getPerfil() != Constantes.PERFIL_TODOS && !usuario.getLogin().equals("")){
 			usuarios = dao.listarUsuariosPorPerfilELogin(usuario);
 		}
 		if(usuarios.size()>0){
 			setExibeDataTable(true);
 		}else{
-			FacesUtil.setMessageSucesso("Erro", "Nenhum usuário encontrado!");
+			FacesUtil.setMessageError("Erro", "Nenhum usuário encontrado!");
 		}
 	}
 	public void limpar(){

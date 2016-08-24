@@ -34,4 +34,8 @@ public class FacesUtil{
 		RequestContext.getCurrentInstance().showMessageInDialog(message);
 	}
 	
+	public static Object getObjectSession(String key){
+		return FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get(key);
+	}
+	
 }

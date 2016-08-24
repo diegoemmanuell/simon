@@ -31,6 +31,10 @@
 								</p:commandLink>
 							</p:column>
 						</p:dataTable>	
+						<p:ajaxStatus onstart="PF('status').show()" onsuccess="PF('status').hide()"/>
+								<p:dialog widgetVar="status" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+									<p:graphicImage value="/pages/template/imagens/carregando.gif"/>
+								</p:dialog>
 					</h:form>
 			</ui:define>
 			

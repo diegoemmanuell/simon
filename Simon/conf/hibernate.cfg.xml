@@ -12,6 +12,7 @@
   <property name="hibernate.format_sql">true</property>
   <property name="hibernate.hbm2ddl.auto">update</property>
   <mapping class="model.Usuario"/>
+  <mapping class="model.UsuarioSeguranca"/>
   <mapping class="model.Serie"/>
   <mapping class="model.Turma"/>
   <mapping class="model.Disciplina"/>

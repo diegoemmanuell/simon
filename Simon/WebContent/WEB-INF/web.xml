@@ -5,7 +5,7 @@
  <display-name>Simon</display-name>
  <context-param>
   <param-name>primefaces.THEME</param-name>
-  <param-value>home</param-value>
+  <param-value>redmond</param-value>
  </context-param>
  <servlet>
   <servlet-name>Faces Servlet</servlet-name>

@@ -18,19 +18,16 @@
 </h:head>
 <h:body>
 	<p:layout fullPage="true">
-		<p:layoutUnit position="north" size="100" resizable="false" closable="false" collapsible="false">
+		<p:layoutUnit position="north" size="145" resizable="false" closable="false" collapsible="false" style="padding: 0px">
 			<ui:include src="header.xhtml"></ui:include>
 		</p:layoutUnit>
 		
-		<p:layoutUnit position="south" size="40" resizable="false" closable="false" collapsible="false">
-			<ui:include src="footer.xhtml"></ui:include>
-		</p:layoutUnit>
-		
-		<p:layoutUnit position="west" size="200" header="Menu" resizable="false" closable="false" collapsible="false">
+		<p:layoutUnit position="west" size="250" resizable="false" closable="false" collapsible="false" style="padding:0px">
 			<ui:include src="menu.xhtml"></ui:include>
 		</p:layoutUnit>
 		
-		<p:layoutUnit position="center">
+		<p:layoutUnit position="center" style="padding: 0px">
+			<h:outputLink value="/Simon/j_spring_security_logout" style="padding-left: 95%"><p:outputLabel value="Sair" style="font-weight:bold; color: orange"></p:outputLabel></h:outputLink>
 			<ui:insert  name="content"/>
 		</p:layoutUnit>
 	</p:layout>
