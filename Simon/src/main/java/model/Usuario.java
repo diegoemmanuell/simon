@@ -8,6 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
 @SessionScoped
 @SequenceGenerator(name="SQ_USUARIO", sequenceName="SQ_USUARIO", allocationSize=1, initialValue=1)
@@ -26,6 +29,7 @@ public class Usuario {
 	private String cpf;
 	private int turma;
 	private boolean statusMatricula;
+	private @Getter @Setter String descPerfil;
 	
 	
 	public boolean isStatusMatricula() {

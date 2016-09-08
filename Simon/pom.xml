@@ -170,6 +170,12 @@
     <groupId>org.primefaces.themes</groupId>  
     <artifactId>all-themes</artifactId>  
     <version>1.0.10</version>  
-</dependency>   
+</dependency>  
+
+<dependency>
+    <groupId>cz.i24.util</groupId>
+    <artifactId>jasper-utils</artifactId>
+    <version>1.0.7</version>
+</dependency> 
   </dependencies>
 </project>

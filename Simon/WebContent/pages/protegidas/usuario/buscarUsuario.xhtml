@@ -11,8 +11,9 @@
 	  template="/pages/template/template.xhtml">
 			<ui:define name="content">
 					<t:saveState id="usuarioST" value="#{usuarioController.usuario}"/>
+					<t:saveState id="usuariosST" value="#{usuarioController.usuarios}"/>
+					<t:saveState id="usuarioSelecionadoST" value="#{usuarioController.usuarioSelecionado}"/>
 					<h1 style="margin-left: 1cm;">Buscar Usuário</h1>
-					<hr />
 					<h:form id="formCadastrarUsuario">
 					<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
 						<p:growl id="growl" showDetail="true" sticky="true"></p:growl>
@@ -37,30 +38,38 @@
 								<p:dialog widgetVar="status" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
 									<p:graphicImage value="/pages/template/imagens/carregando.gif"/>
 								</p:dialog>
-								<p:commandButton value="Buscar" action="#{usuarioController.buscarUsuarios}" update="@form, growl" ajax="true"></p:commandButton>
+								<p:commandButton value="Buscar" action="#{usuarioController.buscarUsuarios}" update="@form, growl" ></p:commandButton>
 								<br />
 						</p:panel>
-						<p:dataTable id="usuarios" var="usuario" value="#{usuarioController.usuarios}" rendered="#{usuarioController.exibeDataTable}" width="100%" cellpadding="0" cellspacing="0" border="0">
-						<p:column style="text-align:center;" headerText="Id">
-							<h:outputText value="#{usuario.id}"/>
-						</p:column>
+						<p:dataTable id="usuarios" var="usu" value="#{usuarioController.usuarios}" rendered="#{usuarioController.exibeDataTable}" 
+									 width="100%" cellpadding="0" cellspacing="0" border="0">
+						
 						<p:column style="text-align:center;" headerText="Nome">
-							<h:outputText value="#{usuario.nome}"/>
+							<h:outputText value="#{usu.nome}"/>
 						</p:column>
-						<p:column style="text-align:center;" headerText="Login">
-							<h:outputText value="#{usuario.login}"/>
+						<p:column style="text-align:center;" headerText="Login" >
+							<h:outputText value="#{usu.login}"/>
 						</p:column>
 						<p:column style="text-align:center;" headerText="Perfil">
-							<h:outputText value="#{usuario.perfil}"/>
+							<h:outputText value="#{usu.descPerfil}"/>
 						</p:column>
-						<p:column style="text-align:center;" headerText="Email">
-							<h:outputText value="#{usuario.email}"/>
+						<p:column style="text-align:center;" headerText="Ações">
+							<p:commandLink process="usuarios" oncomplete="PF('modalConfirma').show()" update=":formConfirmaExclusao">
+								<p:graphicImage value="/pages/template/imagens/deletar.png" style="border:0;" title="Remover"/>
+								<f:setPropertyActionListener value="#{usu}" target="#{usuarioController.usuarioSelecionado}" />
+							</p:commandLink>
 						</p:column>
-						<p:column style="text-align:center;" headerText="CPF">
-							<h:outputText value="#{usuario.cpf}"/>
-						</p:column>
-						</p:dataTable>	
+						</p:dataTable>
 					</h:form>
+					<p:confirmDialog id="modalConfirma" message="Deseja realmente remover o usuário '#{usuarioController.usuarioSelecionado.login}'?" appendTo="@(body)" header="Confirmação" severity="alert" widgetVar="modalConfirma">
+						<h:form id="formConfirmaExclusao">
+								<h:outputLabel id="teste" value="#{usuarioController.usuarioSelecionado.login}" />
+								<p:commandButton value="Teste" onclick="alert(document.getElementById('formConfirmaExclusao').name)"></p:commandButton>
+								<p:commandButton value="Sim" action="#{usuarioController.deletarUsuario()}" oncomplete="PF('modalConfirma').hide()" update=":formCadastrarUsuario:usuarios">
+								</p:commandButton>
+								<p:commandButton value="Não" onclick="PF('modalConfirma').hide()"></p:commandButton>
+						</h:form>
+					</p:confirmDialog>
 			</ui:define>
 			
 </ui:composition>
