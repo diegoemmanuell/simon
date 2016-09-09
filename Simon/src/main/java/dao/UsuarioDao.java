@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Usuario;
-import model.UsuarioSeguranca;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
