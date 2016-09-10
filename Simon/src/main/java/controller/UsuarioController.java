@@ -11,12 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import lombok.Getter;
 import lombok.Setter;
 import model.Usuario;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.JasperExportManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
 import util.Constantes;
 import util.Criptografia;
 import util.jsf.FacesUtil;
@@ -120,15 +114,5 @@ public class UsuarioController {
 		org.primefaces.context.RequestContext.getCurrentInstance().execute("PF('modalConfirma').show()");
 
 		
-	}
-	public void geraPDF() throws JRException{
-		JasperReport path = JasperCompileManager.compileReport("relatorios\report2.jrxml");
-		JasperPrint printReport = JasperFillManager.fillReport(path, null);
-		JasperExportManager.exportReportToPdfFile(printReport, "relatorios\report2.jrxml");
-	}
-	public static void Main(String [] args) throws JRException{
-		JasperReport path = JasperCompileManager.compileReport("relatorios\report2.jrxml");
-		JasperPrint printReport = JasperFillManager.fillReport(path, null);
-		JasperExportManager.exportReportToPdfFile(printReport, "relatorios\report2.jrxml");
 	}
 }
