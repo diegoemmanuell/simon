@@ -39,7 +39,6 @@ public class QuestaoController {
 		questaoDao = new QuestaoDao();
 		questao = new Questao();
 		listaSeries = questaoDao.listarSeries();
-		listaDisciplinas = new ArrayList<>();
 		questao.setSerie(new Serie());
 		questao.setDisciplina(new Disciplina());
 		exibeDataTable = false;

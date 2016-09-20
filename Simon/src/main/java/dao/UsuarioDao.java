@@ -46,7 +46,7 @@ public class UsuarioDao{
 		config.configure();
 		SessionFactory factory = config.buildSessionFactory();
 		Session session = factory.openSession();
-		List<UsuarioSeguranca> usuarios = new ArrayList<>();
+		List<UsuarioSeguranca> usuarios = new ArrayList<UsuarioSeguranca>();
 		String script = "select * from usuario u where u.login = '" + login + "';";
 		List<Usuario> lista = session.createCriteria(Usuario.class).add(Restrictions.eq("login", login)).list();
 		Usuario u = new Usuario();
